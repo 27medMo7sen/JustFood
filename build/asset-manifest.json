@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/JustFood/static/css/main.0b59e877.css",
+    "main.js": "/JustFood/static/js/main.8349b52f.js",
+    "static/media/meals.jpg": "/JustFood/static/media/meals.2971f633fc1382581cbf.jpg",
+    "index.html": "/JustFood/index.html",
+    "main.0b59e877.css.map": "/JustFood/static/css/main.0b59e877.css.map",
+    "main.8349b52f.js.map": "/JustFood/static/js/main.8349b52f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b59e877.css",
+    "static/js/main.8349b52f.js"
+  ]
+}
