@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/JustFood/static/css/main.fda2712a.css",
-    "main.js": "/JustFood/static/js/main.9a510ed0.js",
+    "main.css": "/JustFood/static/css/main.fadf3a86.css",
+    "main.js": "/JustFood/static/js/main.3c06602e.js",
     "static/media/meals.jpg": "/JustFood/static/media/meals.2971f633fc1382581cbf.jpg",
     "index.html": "/JustFood/index.html",
-    "main.fda2712a.css.map": "/JustFood/static/css/main.fda2712a.css.map",
-    "main.9a510ed0.js.map": "/JustFood/static/js/main.9a510ed0.js.map"
+    "main.fadf3a86.css.map": "/JustFood/static/css/main.fadf3a86.css.map",
+    "main.3c06602e.js.map": "/JustFood/static/js/main.3c06602e.js.map"
   },
   "entrypoints": [
-    "static/css/main.fda2712a.css",
-    "static/js/main.9a510ed0.js"
+    "static/css/main.fadf3a86.css",
+    "static/js/main.3c06602e.js"
   ]
 }
