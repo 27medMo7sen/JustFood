@@ -1,36 +1,41 @@
-import Card from '../UI/Card';
-import MealItem from './MealItem/MealItem';
-import classes from './AvailableMeals.module.css';
-
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
+import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
+import classes from "./AvailableMeals.module.css";
+import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => (
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    fetchMeals();
+  }, []);
+  const fetchMeals = async () => {
+    setIsLoading(true);
+    const res = await fetch(
+      "https://react-3b53b-default-rtdb.firebaseio.com/meals.json"
+    );
+    try {
+      if (!res.ok) throw new Error("Something went wrong !");
+      const data = await res.json();
+      console.log(data);
+      const loadedMeals = [];
+      for (const element in data) {
+        loadedMeals.push({
+          id: element,
+          name: data[element].name,
+          price: data[element].price,
+          description: data[element].description,
+        });
+      }
+      setMeals(loadedMeals);
+    } catch (e) {
+      console.log(e);
+      setError(e.message);
+    }
+    setIsLoading(false);
+  };
+  const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
       id={meal.id}
@@ -39,12 +44,12 @@ const AvailableMeals = () => {
       price={meal.price}
     />
   ));
-
+  let cardContent = <ul>{mealsList}</ul>;
+  if (isLoading) cardContent = <div>Loading....</div>;
+  else if (error) cardContent = <div>{error}</div>;
   return (
     <section className={classes.meals}>
-      <Card>
-        <ul>{mealsList}</ul>
-      </Card>
+      <Card>{cardContent}</Card>
     </section>
   );
 };
